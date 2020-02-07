@@ -3,7 +3,7 @@
 #include <aREST.h>
  
 aREST rest = aREST();
-EthernetServer server(80);
+EthernetServer server(8889);
 void setLedStatus(String status);
 
  void setup() {
