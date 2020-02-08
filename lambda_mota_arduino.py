@@ -2,16 +2,14 @@ import json
 import settings
 import telegram_handler
 import sys
-from datetime import datetime
+import arduino_handler
 
 def handler_message(event,context):
     if(event):
         json_data= json.loads(event)
         resp = telegram_handler.send_message(json_data["message"])
-        if(resp['ok']):
-            print("{\"status\": \"Message Sent\"}")
-        else:
-            print("{\"status\": \"Messsage Fail\"}")        
+        resp_arduino = arduino_handler.set_led_status_ethernet(json_data["message"])
+
 
 a = sys.argv[1]
 handler_message(a,'')
